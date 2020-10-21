@@ -19,8 +19,22 @@
   </div>
   <div class="container">
           <div class="row">
-              <div class="col">
-                  <p>{{ content }}</p></div>
+              <div class="col-sm-6 col-12">
+                  <p>{{ content }}</p>
+               <form method="POST"> {% csrf_token %}<!--by default get actually i want to sent data in backend -->
+
+                   <!--when we submit a from it is post request-->
+
+
+                  <input type="text" class="form-control" placeholder="Name" name="fullname"><br>
+                  <input type="email" class="form-control" placeholder="email" name="email"><br>
+                  <textarea name='content' class="form-control" placeholder="your content"> </textarea>
+                   <br><br>
+                   <button type="submit" class="btn btn-danger">Submit</button>
+              </form>
+
+              </div>
+
           </div>
 
   </div>
