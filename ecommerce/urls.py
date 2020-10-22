@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .views import home_page, about_page, contact_page,login_page
+from .views import home_page, about_page, contact_page,login_page,register_page
 
 urlpatterns = [
     url('^$', home_page),
@@ -24,5 +24,6 @@ urlpatterns = [
     url('^about/$', about_page),
     url('^contact/$', contact_page),
     url('^login/$',login_page),
+    url('^register/$',register_page),
     path('admin/', admin.site.urls),
 ]

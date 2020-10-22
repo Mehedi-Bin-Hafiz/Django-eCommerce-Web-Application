@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import ContactForm, LoginForm
+from .forms import ContactForm, LoginForm, RegisterForm
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -59,7 +59,25 @@ def login_page(request):
             raise forms.ValidationError("Username or password is not matching")
     # No backend authenticated the credentials
     return  render(request,"auth/login.html",context)
+def register_page(request):
+    register_form = RegisterForm(request.POST or None)
+    context = {
+        "title": " Hello User ",
+        "content": "User registration",
+        "form": register_form
+    }
+    if register_form.is_valid():
+        #print(request.user.is_authenticated)  #vvi is_authenticated() callable does not work
+        username = register_form.cleaned_data.get('username')
+        password = register_form.cleaned_data.get('password')
+        password1 = register_form.cleaned_data.get('password1')
+        email = register_form.cleaned_data.get('email')
 
+        print(register_form.cleaned_data)
+
+
+    # No backend authenticated the credentials
+    return  render(request,"auth/register.html",context)
 # def register_page(request):
 #     form = LoginForm(request.POST or None)
 #     if form.is_valid():
