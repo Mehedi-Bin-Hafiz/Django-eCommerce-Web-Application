@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ContactForm, LoginForm, RegisterForm
 from django import forms
+
+from django.contrib.auth import authenticate, login ,get_user_model
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+
 
 def home_page(request):
     context = {
@@ -70,12 +72,11 @@ def register_page(request):
         #print(request.user.is_authenticated)  #vvi is_authenticated() callable does not work
         username = register_form.cleaned_data.get('username')
         password = register_form.cleaned_data.get('password')
-        password1 = register_form.cleaned_data.get('password1')
         email = register_form.cleaned_data.get('email')
-
         print(register_form.cleaned_data)
-
-
+        new_user = User.objects.create_user(username,email,password)
+        new_user.save()
+        #print(register_form.cleaned_data)
     # No backend authenticated the credentials
     return  render(request,"auth/register.html",context)
 # def register_page(request):
@@ -86,8 +87,4 @@ def register_page(request):
 
 
 ##validate
-def clean_email(self):
-    email = self.cleand_data.get('email')
-    if not "@gmail.com" in email:
-        raise forms.ValidationError("enter valid gmail")
-    return email
+
