@@ -9,6 +9,11 @@ class ProductListView(ListView):
     queryset = Product.objects.all() # the way of making query set. it getting every thing from database
     template_name = 'products/product_list.html'
 
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super(ProductListView, self).get_context_data(*args,**kwargs)
+    #     print(context) #paginated = পৃষ্ঠায়িত
+    #     return context
+
 
 
 #function based view
