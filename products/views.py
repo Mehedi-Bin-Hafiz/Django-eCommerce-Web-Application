@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic import  ListView
+from django.views.generic import  ListView, DeleteView
 from django.shortcuts import render
 from .models import Product
 
@@ -14,6 +14,10 @@ class ProductListView(ListView):
     #     print(context) #paginated = পৃষ্ঠায়িত
     #     return context
 
+class ProductDetailView(DeleteView):
+    queryset = Product.objects.all() # the way of making query set. it getting every thing from database
+    template_name = 'products/product_detail.html'
+
 
 
 #function based view
@@ -25,3 +29,11 @@ def product_List_view(request):
     }
 
     return render(request,'products/product_list.html',context)
+
+def product_detail_view(request):
+    queryset = Product.objects.all()
+    context={
+        'object_list': queryset
+    }
+
+    return render(request,'products/product_detail.html',context)
