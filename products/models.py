@@ -7,3 +7,5 @@ class Product(models.Model):
 
     def __str__(self):# str is a function that overwrite class object in database
         return self.title
+    def __unicode__(self): # this code works only python 2
+        return  self.title
