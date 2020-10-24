@@ -77,7 +77,3 @@ class RegisterForm(forms.Form):
         em = User.objects.filter(email=email)
         if em.exists():
             raise forms.ValidationError("Email is already taken")
-
-
-
-

@@ -28,9 +28,9 @@ urlpatterns = [
     url('^login/$',login_page),
     url('^register/$',register_page),
     url('^products/$',ProductListView.as_view()), #as_view() because we need to callable item. class based view does not have.
-    url('^products_fbv/$',product_List_view),
+    url('^products-fbv/$',product_List_view),
     url('^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
-    url('^products_fbv/(?P<pk>\d+)/$', product_detail_view),
+    url('^products-fbv/(?P<pk>\d+)/$', product_detail_view),
     path('admin/', admin.site.urls),
 ]
 
