@@ -35,5 +35,4 @@ def product_detail_view(request):
     context={
         'object_list': queryset
     }
-
     return render(request,'products/product_detail.html',context)

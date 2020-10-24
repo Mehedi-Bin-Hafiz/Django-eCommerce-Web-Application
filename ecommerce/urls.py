@@ -19,7 +19,7 @@ from django.conf.urls import url
 from .views import home_page, about_page, contact_page,login_page,register_page
 from django.conf import settings
 from django.conf.urls.static import static
-from products.views import product_List_view,ProductListView
+from products.views import product_List_view,ProductListView,product_detail_view,ProductDetailView
 urlpatterns = [
     url('^$', home_page),
     url('^home/$', home_page),
@@ -29,6 +29,8 @@ urlpatterns = [
     url('^register/$',register_page),
     url('^products/$',ProductListView.as_view()), #as_view() because we need to callable item. class based view does not have.
     url('^products_fbv/$',product_List_view),
+    url('^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
+    url('^products_fbv/(?P<pk>\d+)/$', product_detail_view),
     path('admin/', admin.site.urls),
 ]
 
