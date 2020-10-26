@@ -14,6 +14,12 @@ def upload_image_path(instance, filename):
     final_file_name = '{new_filename}{ext}'.format(new_filename=new_filename,ext=ext)
     return "products/{new_filename}/{final_file_name}".format(new_filename=new_filename,final_file_name=final_file_name)
 
+""
+# class ProductManger(models.Manager): #create custom model manager.
+#     def get_by_id(self,id):
+#         return self.get_queryset().filter(id=id) #Product.objects == self.get_queryset()
+
+
 class Product(models.Model):
     title           = models.CharField(max_length=120) #charfield must need max_length
     description     = models.TextField()
